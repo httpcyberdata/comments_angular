@@ -1,1 +1,10 @@
-<h1>comment</h1>
+<div class="comments">
+	<h3 class="comments-title">Comments</h3>
+	<div class="comment-form-title">Write comment</div>
+	COMMENT FORM
+	<div class="comments-container">
+		<div *ngFor="let comment of comments">
+			{{ comment.body }}
+		</div>
+	</div>
+</div>
