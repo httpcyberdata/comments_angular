@@ -9,4 +9,12 @@ export class CommentsService {
 	getComments(): Observable<CommentInterface[]> {
 		return this.httpClient.get<CommentInterface[]>('http://localhost:3000/comments')
 	}
-}
+
+	createComment(text: string, parentId: null|string): Observable<CommentInterface> {
+		return this.httpClient.post<CommentInterface>('http://localhost:3000/comments', {
+			body: text,
+			parentId
+		})
+
+	}
+ }

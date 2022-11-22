@@ -17,4 +17,11 @@ export class CommentsComponent {
 			})
 		}
 
+		addComment({ text, parentId}: {text: string, parentId: null | string}): void {
+			console.log('addComment', text, parentId)
+			this.commentsService.createComment(text, parentId).subscribe(createdComment => {
+				this.comments = [...this.comments, createdComment];
+			})
+		}
+
 }
