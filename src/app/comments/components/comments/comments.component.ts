@@ -26,6 +26,21 @@ export class CommentsComponent {
 				this.activeComment = null;
 			})
 		}
+
+		updateComment({text, commentId}: {text: string, commentId: string;}) {
+			this.commentsService
+				.updateComment(commentId, text)
+				.subscribe((updatedComment) => {
+				this.comments = this.comments.map((comment) => {
+					if(comment.id === commentId) {
+						return updatedComment;
+					}
+					return comment;
+				});
+				this.activeComment = null;
+			});
+		}
+
 		getReplies(commentId: string): CommentInterface[] {
 			return this.comments.filter(comment => comment.parentId === commentId).sort((a,b) =>
 			 new Date(a.createdAt).getMilliseconds() - 

@@ -20,8 +20,13 @@ export class CommentComponent implements OnInit {
 	@Output() addComment = new EventEmitter<{
 			text: string,
 			parentId: string | null;
-	}>();
+	}>();  
 
+	@Output() updateComment = new EventEmitter<{ 
+		text: string;
+		commentId: string;
+	}>();
+	
 	canReply: boolean = false;
 	canEdit: boolean = false;
 	canDelete: boolean = false;
@@ -50,4 +55,14 @@ export class CommentComponent implements OnInit {
 		}
 		return ( this.activeComment.id === this.comment.id && this.activeComment.type === this.activeCommentType.replying);
 	}
+
+	isEditing(): boolean {
+		if(!this.activeComment) {
+			return false;
+		}
+		return (
+			this.activeComment.id === this.comment.id && this.activeComment.type === this.activeCommentType.editing
+		)
+	}
 }
+
