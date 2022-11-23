@@ -23,6 +23,7 @@ export class CommentsComponent {
 			console.log('addComment', text, parentId)
 			this.commentsService.createComment(text, parentId).subscribe(createdComment => {
 				this.comments = [...this.comments, createdComment];
+				this.activeComment = null;
 			})
 		}
 		getReplies(commentId: string): CommentInterface[] {

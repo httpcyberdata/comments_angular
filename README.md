@@ -22,8 +22,10 @@ ___________
 ## How to use
 
 ### Photos of project:
-![]()
-![]()
+![](/images/angular_comments.gif)
+![](/images/comment_angular_image.png)
+![](/images/comments_angulargif_.gif)
+![](/images/render_comments_photo.png)
 
 ## Apps used:
 	- 

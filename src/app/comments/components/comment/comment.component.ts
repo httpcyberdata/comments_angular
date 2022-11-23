@@ -13,6 +13,7 @@ export class CommentComponent implements OnInit {
 	@Input() currentUserId!: string;
 	@Input() replies!: CommentInterface[];
 	@Input() activeComment!: ActiveCommentInterface | null;
+	@Input() comment!: CommentInterface;
 	@Input() parentId: string | null = null;
 
 	@Output() setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
@@ -27,7 +28,6 @@ export class CommentComponent implements OnInit {
 	activeCommentType = ActiveCommentTypeEnum;
 	replyId: string | null = null;
 
-	@Input() comment!: CommentInterface;
 
 	ngOnInit(): void {
 		const fiveMinutes = 300000;
