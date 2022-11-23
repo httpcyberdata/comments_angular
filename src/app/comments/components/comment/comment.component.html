@@ -13,7 +13,10 @@
 			submitLabel="Update" 
 			[hasCancelButton]="true" 
 			[initialText]="comment.body" 
-			(handleSubmit)="updateComment.emit({text: $event, commentId: comment.id})">
+			(handleSubmit)="
+			updateComment.emit({text: $event, commentId: comment.id})"
+			(handleCancel)="setActiveComment.emit(null)"
+			>
 			
 		</comment-form>
 		<div class="comment-actions">

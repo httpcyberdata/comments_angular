@@ -4,8 +4,13 @@
 	<button class="comment-form-button" type="submit" [disabled]="form.invalid">
 		{{submitLabel}}
 	</button>
-	<button *ngIf="hasCancelButton" type="button" class="comment-form-button comment-form-cancel-button">
-		Cancel
+	<button 
+		*ngIf="hasCancelButton" 
+		type="button"
+		class="comment-form-button comment-form-cancel-button"
+		(click)="handleCancel.emit()"
+		>
+		 Cancel
 	</button>
 
 	<!-- 24:30 9th of Angular binge playlist. -->

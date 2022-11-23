@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+ import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 @Component({
 	selector: 'comment-form',
@@ -11,6 +11,7 @@ export class CommentFormComponent {
 	@Input() initialText: string = '';
 
 	@Output() handleSubmit = new EventEmitter<string>();
+	@Output() handleCancel = new EventEmitter<void>();
 	form!: FormGroup;
 
 	constructor(private fb: FormBuilder) {}
