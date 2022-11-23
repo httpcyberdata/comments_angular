@@ -6,7 +6,7 @@
 		<div class="comment-content">
 			<div class="comment-author"> {{ comment.username }}</div>
 		</div>
-		<div class="comment-text">{{ comment.body }} </div>
+		<div class="comment-text" *ngIf="!isEditing()  ">{{ comment.body }} </div>
 
 		<comment-form 
 			*ngIf="isEditing()"
@@ -43,6 +43,7 @@
 
 				>
 			</comment-form>
+
 			<div class="replies" *ngIf="replies.length > 0">
 				<comment 
 					*ngFor="let reply of replies" 
@@ -50,6 +51,7 @@
 					(setActiveComment)="setActiveComment.emit($event)"
 					[activeComment]="activeComment"
 					(addComment)="addComment.emit($event)"
+					(updateComment)="updateComment.emit($event)"
 					[parentId]="comment.id"
 					[replies]="[]"
 					[currentUserId]="currentUserId"

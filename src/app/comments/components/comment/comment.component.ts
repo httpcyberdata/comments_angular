@@ -20,7 +20,7 @@ export class CommentComponent implements OnInit {
 	@Output() addComment = new EventEmitter<{
 			text: string,
 			parentId: string | null;
-	}>();  
+	}>();
 
 	@Output() updateComment = new EventEmitter<{ 
 		text: string;
