@@ -13,7 +13,10 @@ export class CommentsService {
 	createComment(text: string, parentId: null|string): Observable<CommentInterface> {
 		return this.httpClient.post<CommentInterface>('http://localhost:3000/comments', {
 			body: text,
-			parentId
+			parentId,
+			createdAt: new Date().toISOString(),
+			userId: '1',
+			username: 'John',
 		})
 
 	}
