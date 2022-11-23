@@ -28,6 +28,9 @@ export class CommentsService {
 			{
 				body: text
 			}
-		)
+		);
+	}
+	deleteComment(id: string): Observable<{}> {
+		return this.httpClient.delete(`http://localhost:3000/comments/${id}`)
 	}
  }

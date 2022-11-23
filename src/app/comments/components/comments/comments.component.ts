@@ -41,6 +41,14 @@ export class CommentsComponent {
 			});
 		}
 
+		deleteComment(commentId: string): void {
+			this.commentsService.deleteComment(commentId).subscribe(() => {
+				 this.comments = this.comments.filter(
+				 	(comment) => comment.id !== commentId
+				 );
+			})
+		}
+
 		getReplies(commentId: string): CommentInterface[] {
 			return this.comments.filter(comment => comment.parentId === commentId).sort((a,b) =>
 			 new Date(a.createdAt).getMilliseconds() - 

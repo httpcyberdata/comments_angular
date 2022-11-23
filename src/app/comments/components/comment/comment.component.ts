@@ -26,6 +26,8 @@ export class CommentComponent implements OnInit {
 		text: string;
 		commentId: string;
 	}>();
+
+	@Output() deleteComment = new EventEmitter<string>();
 	
 	canReply: boolean = false;
 	canEdit: boolean = false;

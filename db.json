@@ -33,22 +33,6 @@
       "id": 4
     },
     {
-      "body": "test!!!",
-      "parentId": 3,
-      "createdAt": "2022-11-23T20:59:25.163Z",
-      "userId": "1",
-      "username": "John",
-      "id": 5
-    },
-    {
-      "body": "I liked the video!",
-      "parentId": 1,
-      "createdAt": "2022-11-23T21:49:41.760Z",
-      "userId": "1",
-      "username": "John",
-      "id": 6
-    },
-    {
       "body": "qqq@@@@@",
       "parentId": null,
       "createdAt": "2022-11-23T22:42:44.141Z",

@@ -36,7 +36,12 @@
 			>
 				Edit
 			</div>
-			<div *ngIf="canDelete" class="comment-action">
+			<div 
+				*ngIf="canDelete" 
+				class="comment-action" 
+				(click)="deleteComment.emit(comment.id)"
+
+				>
 				Delete
 			</div>
 			<comment-form 
@@ -58,6 +63,7 @@
 					[parentId]="comment.id"
 					[replies]="[]"
 					[currentUserId]="currentUserId"
+					(deleteComment)="deleteComment.emit($event)"
 					>
 					
 				</comment>
