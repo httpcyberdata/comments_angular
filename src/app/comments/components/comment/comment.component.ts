@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { ActiveCommentInterface } from '../../types/activeComment.interface';
+import { ActiveCommentTypeEnum } from '../../types/activeCommentType.enum';
 import { CommentInterface } from '../../types/comment.interface';
+
 @Component({
 	selector: 'comment',
 	templateUrl: './comment.component.html',
@@ -9,10 +12,20 @@ import { CommentInterface } from '../../types/comment.interface';
 export class CommentComponent implements OnInit {
 	@Input() currentUserId!: string;
 	@Input() replies!: CommentInterface[];
+	@Input() activeComment!: ActiveCommentInterface | null;
+	@Input() parentId: string | null = null;
+
+	@Output() setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
+	@Output() addComment = new EventEmitter<{
+			text: string,
+			parentId: string | null;
+	}>();
 
 	canReply: boolean = false;
 	canEdit: boolean = false;
 	canDelete: boolean = false;
+	activeCommentType = ActiveCommentTypeEnum;
+	replyId: string | null = null;
 
 	@Input() comment!: CommentInterface;
 
@@ -25,9 +38,16 @@ export class CommentComponent implements OnInit {
 		
 		this.canReply = Boolean(this.currentUserId);
 		this.canEdit = this.currentUserId === this.comment.userId && !timePassed;
-		this.canEdit = this.currentUserId == this.comment.userId && 
+		this.canDelete = this.currentUserId == this.comment.userId && 
 			!timePassed && this.replies.length === 0;
+		this.replyId = this.parentId ? this.parentId : this.comment.id;
 
 
+	}
+	isReplying(): boolean {
+		if(!this.activeComment) {
+			return false;
+		}
+		return ( this.activeComment.id === this.comment.id && this.activeComment.type === this.activeCommentType.replying);
 	}
 }

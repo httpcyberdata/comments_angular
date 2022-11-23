@@ -3,8 +3,12 @@
 	<div class="comment-form-title">Write comment</div>
 	<comment-form submitLabel="Write" (handleSubmit)="addComment({text: $event, parentId: null})"></comment-form>
 	<div class="comments-container">
-		<comment *ngFor="let comment of comments" [comment]="comment" [currentUserId]="currentUserId"
+		<comment *ngFor="let comment of comments" 
+		[comment]="comment" [currentUserId]="currentUserId"
 		[replies]="getReplies(comment.id)"
+		[activeComment]="activeComment"
+		(setActiveComment)="setActiveComment($event)"
+		(addComment)="addComment($event)"
 		>
 		</comment>
 	</div>

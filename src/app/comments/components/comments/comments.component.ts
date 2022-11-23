@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommentsService } from '../../services/comments.service';
 import { CommentInterface } from '../../types/comment.interface';
+import { ActiveCommentInterface } from '../../types/activeComment.interface';
 @Component({
 	selector: 'comments',
 	templateUrl: './comments.component.html'
@@ -9,6 +10,7 @@ export class CommentsComponent {
 	@Input() currentUserId!: string;
 
 	comments: CommentInterface[] = [];
+	activeComment: ActiveCommentInterface | null = null;
 
 	constructor(private commentsService: CommentsService) {}
 		ngOnInit(): void {
@@ -29,5 +31,9 @@ export class CommentsComponent {
 			 new Date(b.createdAt).getMilliseconds()
 			 )
 		}
+
+		setActiveComment(activeComment: ActiveCommentInterface | null): void {
+			this.activeComment = activeComment
+		} 
 
 }
