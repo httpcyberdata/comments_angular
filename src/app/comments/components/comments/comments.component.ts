@@ -50,7 +50,8 @@ export class CommentsComponent {
 		}
 
 		getReplies(commentId: string): CommentInterface[] {
-			return this.comments.filter(comment => comment.parentId === commentId).sort((a,b) =>
+			return this.comments
+				.filter(comment => comment.parentId === commentId).sort((a,b) =>
 			 new Date(a.createdAt).getMilliseconds() - 
 			 new Date(b.createdAt).getMilliseconds()
 			 )

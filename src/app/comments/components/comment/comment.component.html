@@ -20,7 +20,9 @@
 			
 		</comment-form>
 		<div class="comment-actions">
-			<div *ngIf="canReply" class="comment-action" 
+			<div 
+				*ngIf="canReply" 
+				class="comment-action" 
 				(click)="setActiveComment.emit({ id: comment.id, type: activeCommentType.replying})"
 			>
 				Reply
@@ -70,6 +72,5 @@
 			</div>
 
 		</div>
-			COMMENT FORM REPLYING REPLIES
 	</div>
 </div>

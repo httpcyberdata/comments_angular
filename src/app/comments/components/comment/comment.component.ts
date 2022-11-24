@@ -18,7 +18,7 @@ export class CommentComponent implements OnInit {
 
 	@Output() setActiveComment = new EventEmitter<ActiveCommentInterface | null>();
 	@Output() addComment = new EventEmitter<{
-			text: string,
+			text: string;
 			parentId: string | null;
 	}>();
 
@@ -55,7 +55,9 @@ export class CommentComponent implements OnInit {
 		if(!this.activeComment) {
 			return false;
 		}
-		return ( this.activeComment.id === this.comment.id && this.activeComment.type === this.activeCommentType.replying);
+		return ( 
+			this.activeComment.id === this.comment.id && 
+			this.activeComment.type === this.activeCommentType.replying);
 	}
 
 	isEditing(): boolean {
@@ -63,7 +65,8 @@ export class CommentComponent implements OnInit {
 			return false;
 		}
 		return (
-			this.activeComment.id === this.comment.id && this.activeComment.type === this.activeCommentType.editing
+			this.activeComment.id === this.comment.id && 
+			this.activeComment.type === 'editing'
 		)
 	}
 }
